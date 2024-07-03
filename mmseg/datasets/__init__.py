@@ -26,6 +26,11 @@ from .potsdam import PotsdamDataset
 from .refuge import REFUGEDataset
 from .stare import STAREDataset
 from .synapse import SynapseDataset
+from .neurocle_cosmetic import NeurocleCosmeticDataset
+from .neurocle_hazelnut import NeurocleHazelnutDataset
+from .neurocle_severstal import NeurocleSeverstalDataset
+from .neurocle_suncheon import NeurocleSuncheonDataset
+
 # yapf: disable
 from .transforms import (CLAHE, AdjustGamma, Albu, BioMedical3DPad,
                          BioMedical3DRandomCrop, BioMedical3DRandomFlip,
@@ -61,5 +66,6 @@ __all__ = [
     'MapillaryDataset_v2', 'Albu', 'LEVIRCDDataset',
     'LoadMultipleRSImageFromFile', 'LoadSingleRSImageFromFile',
     'ConcatCDInput', 'BaseCDDataset', 'DSDLSegDataset', 'BDD100KDataset',
-    'NYUDataset', 'HSIDrive20Dataset'
+    'NYUDataset', 'HSIDrive20Dataset', 'NeurocleCosmeticDataset', 
+    'NeurocleHazelnutDataset', 'NeurocleSeverstalDataset', 'NeurocleSuncheonDataset'
 ]
