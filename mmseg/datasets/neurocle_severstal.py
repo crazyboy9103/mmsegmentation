@@ -10,8 +10,8 @@ class NeurocleSeverstalDataset(BaseSegDataset):
     """
     METAINFO = dict(
         classes=(
-            '90', '92', '91', '85'),
-        palette=[[0, 192, 64], [165, 42, 42], [0, 192, 0], [196, 196, 196]])
+            'BG', '90', '92', '91', '85'),
+        palette=[[165, 42, 42], [0, 192, 64], [165, 42, 42], [0, 192, 0], [196, 196, 196]])
 
     def __init__(self,
                  img_suffix='.jpg',

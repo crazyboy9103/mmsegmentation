@@ -1,6 +1,4 @@
 # dataset settings
-dataset_type = 'COCOStuffDataset'
-data_root = 'data/transformer/seg/coco-stuff/'
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
@@ -17,7 +15,7 @@ train_pipeline = [
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(2048, 512), keep_ratio=True),
+    dict(type='Resize', scale=(2048, 512), keep_ratio=False), #False for images with various sizes
     # add loading annotation after ``Resize`` because ground truth
     # does not need to do resize data transform
     dict(type='LoadAnnotations'),
@@ -40,26 +38,21 @@ tta_pipeline = [
         ])
 ]
 train_dataloader = dict(
-    batch_size=4,
-    num_workers=4,
+    batch_size=8,
+    num_workers=8,
     persistent_workers=True,
     sampler=dict(type='InfiniteSampler', shuffle=True),
     dataset=dict(
-        type=dataset_type,
-        data_root=data_root,
-        data_prefix=dict(
-            img_path='images/train2017', seg_map_path='annotations/train2017'),
+        data_prefix=dict(img_path='images/train', seg_map_path='annotations/train'),
         pipeline=train_pipeline))
 val_dataloader = dict(
-    batch_size=1,
-    num_workers=4,
+    batch_size=8,
+    num_workers=8,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
-        type=dataset_type,
-        data_root=data_root,
         data_prefix=dict(
-            img_path='images/val2017', seg_map_path='annotations/val2017'),
+            img_path='images/test', seg_map_path='annotations/test'),
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 

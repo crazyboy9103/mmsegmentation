@@ -1,17 +1,13 @@
 _base_ = ["./custom_base.py"]
 
-dataset_type = 'NeurocleCosmeticDataset'
-data_root = 'data/transformer/seg/cosmetic'
+dataset_type = 'NeurocleSuncheonDataset'
+data_root = 'data/transformer/seg/suncheon'
 
 train_dataloader = dict(
-    batch_size=8,
-    num_workers=8,
     dataset=dict(
         type=dataset_type,
         data_root=data_root))
 val_dataloader = dict(
-    batch_size=8,
-    num_workers=8,
     dataset=dict(
         type=dataset_type,
         data_root=data_root,))

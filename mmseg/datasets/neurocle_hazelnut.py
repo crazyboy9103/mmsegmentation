@@ -10,8 +10,8 @@ class NeurocleHazelnutDataset(BaseSegDataset):
     """
     METAINFO = dict(
         classes=(
-            'crack', 'cut', 'hole', 'print'),
-        palette=[[0, 192, 64], [165, 42, 42], [0, 192, 0], [196, 196, 196]])
+            'BG', 'crack', 'cut', 'hole', 'print'),
+        palette=[[165, 42, 42], [0, 192, 64], [165, 42, 42], [0, 192, 0], [196, 196, 196]])
 
     def __init__(self,
                  img_suffix='.png',

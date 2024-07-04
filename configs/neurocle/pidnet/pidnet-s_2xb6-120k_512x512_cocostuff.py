@@ -106,40 +106,15 @@ train_pipeline = [
     dict(type='GenerateEdge', edge_width=4),
     dict(type='PackSegInputs')
 ]
-test_pipeline = [
-    dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(2048, 512), keep_ratio=True),
-    # add loading annotation after ``Resize`` because ground truth
-    # does not need to do resize data transform
-    dict(type='LoadAnnotations'),
-    dict(type='PackSegInputs')
-]
+
 train_dataloader = dict(
     batch_size=8,
     num_workers=8,
-    persistent_workers=True,
-    sampler=dict(type='InfiniteSampler', shuffle=True),
-    dataset=dict(
-        type=dataset_type,
-        data_root=data_root,
-        data_prefix=dict(
-            img_path='images/train2017', seg_map_path='annotations/train2017'),
-        pipeline=train_pipeline))
+    dataset=dict(pipeline=train_pipeline))
 val_dataloader = dict(
     batch_size=8,
-    num_workers=8,
-    persistent_workers=True,
-    sampler=dict(type='DefaultSampler', shuffle=False),
-    dataset=dict(
-        type=dataset_type,
-        data_root=data_root,
-        data_prefix=dict(
-            img_path='images/val2017', seg_map_path='annotations/val2017'),
-        pipeline=test_pipeline))
+    num_workers=8)
 test_dataloader = val_dataloader
-
-val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
-test_evaluator = val_evaluator
 
 iters = 120000
 # optimizer

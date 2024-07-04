@@ -10,8 +10,8 @@ class NeurocleSuncheonDataset(BaseSegDataset):
     """
     METAINFO = dict(
         classes=(
-            'Hemorrhage'),
-        palette=[[0, 192, 64]])
+            'BG', 'Hemorrhage'),
+        palette=[[165, 42, 42], [0, 192, 64]])
 
     def __init__(self,
                  img_suffix='.jpg',
