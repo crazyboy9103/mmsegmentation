@@ -1,7 +1,7 @@
 _base_ = ["./custom_base.py"]
 
 dataset_type = 'NeurocleCosmeticDataset'
-data_root = 'data/transformer/seg/cosmetic'
+data_root = '/datasets/seg/cosmetic'
 
 train_dataloader = dict(
     batch_size=8,

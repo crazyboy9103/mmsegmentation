@@ -11,7 +11,7 @@ visualizer = dict(
     type='SegLocalVisualizer', vis_backends=vis_backends, name='visualizer')
 
 dataset_type = 'COCOStuffDataset'
-data_root = 'data/transformer/seg/coco-stuff/'
+data_root = '/datasets/seg/coco-stuff/'
 
 # The class_weight is borrowed from https://github.com/openseg-group/OCNet.pytorch/issues/14 # noqa
 # Licensed under the MIT License

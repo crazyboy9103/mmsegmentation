@@ -1,7 +1,7 @@
 _base_ = ["./custom_base.py"]
 
 dataset_type = 'NeurocleHazelnutDataset'
-data_root = 'data/transformer/seg/hazelnut'
+data_root = '/datasets/seg/hazelnut'
 
 train_dataloader = dict(
     dataset=dict(

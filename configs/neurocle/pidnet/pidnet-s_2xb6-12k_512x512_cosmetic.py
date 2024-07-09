@@ -75,7 +75,7 @@ model = dict(
 
 # dataset settings
 dataset_type = 'NeurocleCosmeticDataset'
-data_root = 'data/transformer/seg/cosmetic'
+data_root = '/datasets/seg/cosmetic'
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),

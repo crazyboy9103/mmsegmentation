@@ -1,7 +1,7 @@
 _base_ = ["./custom_base.py"]
 
 dataset_type = 'NeurocleSeverstalDataset'
-data_root = 'data/transformer/seg/severstal'
+data_root = '/datasets/seg/severstal'
 
 train_dataloader = dict(
     dataset=dict(

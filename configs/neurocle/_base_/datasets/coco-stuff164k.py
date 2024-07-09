@@ -1,6 +1,6 @@
 # dataset settings
 dataset_type = 'COCOStuffDataset'
-data_root = 'data/transformer/seg/coco-stuff/'
+data_root = '/datasets/seg/coco-stuff/'
 crop_size = (512, 512)
 train_pipeline = [
     dict(type='LoadImageFromFile'),
