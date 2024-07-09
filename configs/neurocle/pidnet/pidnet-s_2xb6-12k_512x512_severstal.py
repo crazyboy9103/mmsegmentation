@@ -5,7 +5,7 @@ _base_ = [
 
 vis_backends = [
     dict(type='LocalVisBackend'), 
-    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['pidnet', 'severstal']))
+    dict(type='WandbVisBackend', init_kwargs=dict(project='neurocle', tags=['seg', 'pidnet', 'severstal']))
 ]
 visualizer = dict(
     type='SegLocalVisualizer', vis_backends=vis_backends, name='visualizer')
