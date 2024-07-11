@@ -8,10 +8,10 @@ param_scheduler = [
         eta_min=1e-4,
         power=0.9,
         begin=0,
-        end=5000,
+        end=10000,
         by_epoch=False)
 ]
-# training schedule for 20k
-train_cfg = dict(type='IterBasedTrainLoop', max_iters=5000, val_interval=500)
+# training schedule for 10k
+train_cfg = dict(type='IterBasedTrainLoop', max_iters=10000, val_interval=1000)
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
