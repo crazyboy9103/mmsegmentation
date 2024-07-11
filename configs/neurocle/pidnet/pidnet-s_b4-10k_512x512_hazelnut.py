@@ -17,12 +17,23 @@ model = dict(
         num_classes={{_base_.num_classes}},
         loss_decode=[
             dict(
-                class_weight={{_base_.class_weight}},),
+                type='CrossEntropyLoss',
+                use_sigmoid=False,
+                class_weight={{_base_.class_weight}}, 
+                loss_weight=0.4),
             dict(
-                class_weight={{_base_.class_weight}},),
+                type='OhemCrossEntropy',
+                thres=0.9,
+                min_kept=131072,
+                class_weight={{_base_.class_weight}}, 
+                loss_weight=1.0),
             dict(type='BoundaryLoss', loss_weight=20.0),
             dict(
-                class_weight={{_base_.class_weight}},)
+                type='OhemCrossEntropy',
+                thres=0.9,
+                min_kept=131072,
+                class_weight={{_base_.class_weight}}, 
+                loss_weight=1.0)
         ]),
     data_preprocessor=dict(size={{_base_.crop_size}})
 )
