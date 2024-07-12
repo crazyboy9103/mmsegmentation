@@ -41,18 +41,13 @@ model = dict(
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations'),
-    dict(
-        type='RandomResize',
-        scale=(2048, 512),
-        ratio_range=(0.5, 2.0),
-        keep_ratio=True),
-    dict(type='RandomCrop', crop_size={{_base_.crop_size}}, cat_max_ratio=0.75),
+    dict(type='Resize', scale={{_base_.crop_size}}, keep_ratio=False),
     dict(type='RandomFlip', prob=0.5),
-    dict(type='PhotoMetricDistortion'),
-    dict(type='GenerateEdge', edge_width=4),
+    dict(type='GenerateEdge', edge_width=4), # pidnet requires this augmentation
     dict(type='PackSegInputs')
 ]
 
 train_dataloader = dict(
+    batch_size=32,
+    num_workers=4,
     dataset=dict(pipeline=train_pipeline))
-

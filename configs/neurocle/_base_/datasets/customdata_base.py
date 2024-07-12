@@ -1,10 +1,19 @@
 _base_ = ["./coco-stuff164k.py"]
 
+train_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(type='LoadAnnotations'),
+    dict(type='Resize', scale={{_base_.crop_size}}, keep_ratio=False),
+    dict(type='RandomFlip', prob=0.5),
+    dict(type='GenerateEdge', edge_width=4),
+    dict(type='PackSegInputs')
+]
+
 test_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(type='Resize', scale=(2048, 512), keep_ratio=False), #False for images with various sizes
+    dict(type='Resize', scale={{_base_.crop_size}}, keep_ratio=False), #False for images with various sizes
     # add loading annotation after ``Resize`` because ground truth
-    # does not need to do resize data transform
+    # does not need to do resize data transforms
     dict(type='LoadAnnotations'),
     dict(type='PackSegInputs')
 ]
@@ -14,6 +23,7 @@ train_dataloader = dict(
         data_prefix=dict(
             img_path='images/train', seg_map_path='annotations/train'
         ),
+        pipeline=train_pipeline
     )
 )
 
