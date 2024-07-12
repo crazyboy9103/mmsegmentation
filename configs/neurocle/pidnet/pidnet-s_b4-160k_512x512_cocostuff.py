@@ -52,3 +52,7 @@ train_dataloader = dict(
     num_workers=4,
     dataset=dict(pipeline=train_pipeline))
 
+val_dataloader = dict(
+    batch_size=32, 
+    num_workers=4
+)

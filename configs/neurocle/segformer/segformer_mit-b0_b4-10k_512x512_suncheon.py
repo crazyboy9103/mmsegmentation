@@ -43,3 +43,13 @@ optim_wrapper = dict(
 #         by_epoch=False,
 #     )
 # ]
+
+train_dataloader = dict(
+    batch_size=32,
+    num_workers=4,
+)
+
+val_dataloader = dict(
+    batch_size=32, 
+    num_workers=4
+)
