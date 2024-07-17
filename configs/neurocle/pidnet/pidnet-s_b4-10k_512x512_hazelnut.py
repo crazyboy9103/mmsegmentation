@@ -49,10 +49,10 @@ train_pipeline = [
 
 train_dataloader = dict(
     batch_size=32,
-    num_workers=4,
+    num_workers=8,
     dataset=dict(pipeline=train_pipeline))
 
 val_dataloader = dict(
     batch_size=32, 
-    num_workers=4
+    num_workers=8
 )

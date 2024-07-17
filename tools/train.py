@@ -10,6 +10,8 @@ from mmengine.runner import Runner
 
 from mmseg.registry import RUNNERS
 
+import wandb 
+wandb.require("core")
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a segmentor')

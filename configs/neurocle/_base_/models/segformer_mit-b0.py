@@ -1,4 +1,4 @@
-# model settings
+checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segformer/mit_b0_20220624-7e0fe6dd.pth'  # noqa
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 data_preprocessor = dict(
     type='SegDataPreProcessor',
@@ -10,7 +10,6 @@ data_preprocessor = dict(
 model = dict(
     type='EncoderDecoder',
     data_preprocessor=data_preprocessor,
-    pretrained=None,
     backbone=dict(
         type='MixVisionTransformer',
         in_channels=3,
@@ -25,7 +24,8 @@ model = dict(
         qkv_bias=True,
         drop_rate=0.0,
         attn_drop_rate=0.0,
-        drop_path_rate=0.1),
+        drop_path_rate=0.1,
+        init_cfg=dict(type='Pretrained', checkpoint=checkpoint)),
     decode_head=dict(
         type='SegformerHead',
         in_channels=[32, 64, 160, 256],

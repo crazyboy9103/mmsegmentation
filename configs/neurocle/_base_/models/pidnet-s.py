@@ -1,4 +1,3 @@
-
 checkpoint_file = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/pidnet/pidnet-s_imagenet1k_20230306-715e6273.pth'  # noqa
 norm_cfg = dict(type='SyncBN', requires_grad=True)
 data_preprocessor = dict(

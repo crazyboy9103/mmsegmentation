@@ -19,6 +19,7 @@ test_pipeline = [
 ]
 
 train_dataloader = dict(
+    sampler=dict(type='DefaultSampler', shuffle=True),
     dataset=dict(
         data_prefix=dict(
             img_path='images/train', seg_map_path='annotations/train'
