@@ -1,7 +1,7 @@
 _base_ = [
     '../_base_/datasets/hazelnut.py',
     '../_base_/models/pidnet-s.py',
-    '../_base_/schedules/schedule_10k.py',
+    '../_base_/schedules/schedule_24e.py',
     '../_base_/default_runtime.py'
 ]
 
@@ -41,18 +41,18 @@ model = dict(
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations'),
-    dict(type='Resize', scale={{_base_.crop_size}}, keep_ratio=False),
+    dict(type='Resize', scale={{_base_.crop_size}}, keep_ratio=True),
     dict(type='RandomFlip', prob=0.5),
     dict(type='GenerateEdge', edge_width=4), # pidnet requires this augmentation
     dict(type='PackSegInputs')
 ]
 
 train_dataloader = dict(
-    batch_size=32,
+    batch_size=8,
     num_workers=8,
     dataset=dict(pipeline=train_pipeline))
 
 val_dataloader = dict(
-    batch_size=32, 
+    batch_size=8, 
     num_workers=8
 )

@@ -1,7 +1,7 @@
 _base_ = [
     '../_base_/datasets/severstal.py',
     '../_base_/models/pidnet-s.py',
-    '../_base_/schedules/schedule_10k.py',
+    '../_base_/schedules/schedule_24e.py',
     '../_base_/default_runtime.py'
 ]
 
@@ -48,11 +48,11 @@ train_pipeline = [
 ]
 
 train_dataloader = dict(
-    batch_size=32,
+    batch_size=8,
     num_workers=8,
     dataset=dict(pipeline=train_pipeline))
 
 val_dataloader = dict(
-    batch_size=32, 
+    batch_size=8, 
     num_workers=8
 )

@@ -2,7 +2,7 @@ _base_ = [
     '../_base_/models/segformer_mit-b0.py', 
     '../_base_/datasets/severstal.py',
     '../_base_/default_runtime.py', 
-    '../_base_/schedules/schedule_10k.py'
+    '../_base_/schedules/schedule_24e.py'
 ]
 
 vis_backends = [
@@ -22,8 +22,7 @@ model = dict(
 optim_wrapper = dict(
     # _delete_=True,
     # type='OptimWrapper',
-    # optimizer=dict(
-    #     type='AdamW', lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01),
+    optimizer=dict(lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01),
     paramwise_cfg=dict(
         custom_keys={
             'pos_block': dict(decay_mult=0.),
@@ -32,11 +31,11 @@ optim_wrapper = dict(
         }))
 
 train_dataloader = dict(
-    batch_size=32,
+    batch_size=8,
     num_workers=8,
 )
 
 val_dataloader = dict(
-    batch_size=32, 
+    batch_size=8, 
     num_workers=8
 )

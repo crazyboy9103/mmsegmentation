@@ -2,7 +2,7 @@ _base_ = [
     '../_base_/models/segformer_mit-b0.py', 
     '../_base_/datasets/suncheon.py',
     '../_base_/default_runtime.py', 
-    '../_base_/schedules/schedule_10k.py'
+    '../_base_/schedules/schedule_24e.py'
 ]
 
 vis_backends = [
@@ -32,11 +32,11 @@ optim_wrapper = dict(
         }))
 
 train_dataloader = dict(
-    batch_size=32,
+    batch_size=8,
     num_workers=8,
 )
 
 val_dataloader = dict(
-    batch_size=32, 
+    batch_size=8, 
     num_workers=8
 )
