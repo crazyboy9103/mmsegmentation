@@ -38,10 +38,19 @@ model = dict(
     data_preprocessor=dict(size={{_base_.crop_size}})
 )
 
+train_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(type='LoadAnnotations'),
+    dict(type='Resize', scale={{_base_.crop_size}}, keep_ratio=False),
+    dict(type='RandomFlip', prob=0.5),
+    dict(type='GenerateEdge', edge_width=4), # pidnet requires this augmentation
+    dict(type='PackSegInputs')
+]
+
 train_dataloader = dict(
     batch_size=8,
     num_workers=4,
-)
+    dataset=dict(pipeline=train_pipeline))
 
 val_dataloader = dict(
     batch_size=8, 
